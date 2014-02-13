@@ -22,31 +22,31 @@ class Graph
 	end
 	#find and insert the edges of the vertex
 	def find_edges
-		@graph.each_with_index do |x, xi|
-			@graph.each_with_index do |y, yi|
+		@graph.each_index do |xi|
+			@graph.each_index do |yi|
 				check_adjacent(xi, yi)
 			end
 		end
 	end
 	#checks adjacent verticies on the maze
 	def check_adjacent x, y
-		
-		if x - 1 > 0 and @maze[x - 1][y] == "0"
-			puts @maze[x - 1][y]
-			@graph[x][y].make_edge(x - 1, y)
-		end
-		if y - 1 > 0 and @maze[x][y - 1] == "0"
-			puts @maze[x][y - 1]
-			@graph[x][y].make_edge(x, y - 1)
-		end
-		if x + 1 < @height and @maze[x + 1][y] == "0"
-			puts @maze[x + 1][y]
-			@graph[x][y].make_edge(x + 1, y)
-		end
-		if y + 1 < @width and @maze[x][y + 1] == "0"
-			puts @maze[x][y + 1]
-			@graph[x][y].make_edge(x, y + 1)
-		end
+		if @maze[x][y] != "1"
+			if x - 1 > 0 and @maze[x - 1][y] == "0"
 
+				@graph[x][y].make_edge(x - 1, y)
+			end
+			if y - 1 > 0 and @maze[x][y - 1] == "0"
+
+				@graph[x][y].make_edge(x, y - 1)
+			end
+			if x + 1 < @height and @maze[x + 1][y] == "0"
+
+				@graph[x][y].make_edge(x + 1, y)
+			end
+			if y + 1 < @width and @maze[x][y + 1] == "0"
+
+				@graph[x][y].make_edge(x, y + 1)
+			end
+		end
 	end
 end

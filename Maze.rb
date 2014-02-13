@@ -13,14 +13,18 @@ class Maze
 		@height = m 
 		@width2 =  @width * 2 + 1
 		@height2 = @height * 2 + 1
-		@maze = Array.new(@height2, Array.new(@width2))
+		@maze = Array.new(@height2) {Array.new(@width2)}
 	end
 	#load the values into the maze from a string of ones and zeros
 	def load arg
 	 	if arg.to_s.length == @height2 * @width2
 	 		@arg = arg
-	 		@arg = @arg.chars.each_index do |index|
-	 			@maze[index / @width2][index % @width2] = @arg[index]
+	 		count = 0
+	 		for y in 0..@height2 - 1
+	 			for x in 0..@width2 - 1
+	 				@maze[y][x] = @arg[count]
+	 				count+=1
+	 			end
 	 		end
 	 		print_maze
 	 	else
@@ -43,10 +47,9 @@ class Maze
 	end
 	#prints the 1's and 0's in the maze matrix
 	def print_maze
+		count = 1
 		@maze.each do |x|
-			x.each do |y|
-				puts y
-			end
+			puts x.to_s
 		end
 	end
 	#returns a full maze

@@ -16,6 +16,6 @@ class Vertex
 	end
 	def make_edge x, y
 		@edges.push([x, y])
-		puts @edges + "l"
+		puts @edges.to_s
 	end
 end
