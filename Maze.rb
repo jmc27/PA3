@@ -69,20 +69,21 @@ class Maze
 	#determines if there’s a way to walk from a specified 
 	#beginning position to a specified ending position.
 	def solve begx, begy, endx, endy
-		make_graph
 		@graph.graph[begx][begy].edges.each do |xe, ye|
-			if endx == xe and endy = ye
-				return true
-			end
-			if solve(xe, ye, endx, endy) == true
-				return true
+			if @graph.graph[xe][ye].visited == false
+				@graph.graph[xe][ye].visit
+				if endx == xe and endy = ye
+					return true
+				end
+				if solve(xe, ye, endx, endy) == true
+					return true
+				end
 			end
 		end
 		return false
 	end
 	#intializes a graph of the maze
 	def make_graph
-
 		@graph = Graph.new(@width2, @height2, @maze)
 	end
 end

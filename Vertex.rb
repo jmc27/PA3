@@ -18,4 +18,8 @@ class Vertex
 		@edges.push([x, y])
 		puts @edges.to_s
 	end
+	#visits the vertex
+	def visit
+		@visited == true
+	end
 end

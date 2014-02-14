@@ -19,6 +19,7 @@ class Graph
 			end
 		end
 		find_edges
+
 	end
 	#find and insert the edges of the vertex
 	def find_edges
