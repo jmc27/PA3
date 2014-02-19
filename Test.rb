@@ -5,5 +5,5 @@ class Test
 	maze.display
 	maze.make_graph
 	solvable = maze.solve(1, 1, 3, 1)
-	puts solvable
+	puts solvable.solve
 end

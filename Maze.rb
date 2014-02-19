@@ -2,7 +2,7 @@
 #PA3
 
 require_relative "Graph"
-
+require_relative "MazeSolver"
 
 class Maze
 	attr_accessor :maze, :height, :width, :drawnmaze, :height2, :width2, :arg, :graph
@@ -69,18 +69,7 @@ class Maze
 	#determines if there’s a way to walk from a specified 
 	#beginning position to a specified ending position.
 	def solve begx, begy, endx, endy
-		@graph.graph[begx][begy].edges.each do |xe, ye|
-			if @graph.graph[xe][ye].visited == false
-				@graph.graph[xe][ye].visit
-				if endx == xe and endy = ye
-					return true
-				end
-				if solve(xe, ye, endx, endy) == true
-					return true
-				end
-			end
-		end
-		return false
+		solver = MazeSolver.new(begx,begy, endx, endy, @graph)
 	end
 	#intializes a graph of the maze
 	def make_graph
